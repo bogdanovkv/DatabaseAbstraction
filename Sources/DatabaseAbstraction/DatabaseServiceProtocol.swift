@@ -5,8 +5,6 @@
 //  Created by Константин Богданов on 05.04.2021.
 //
 
-import CoreData
-
 /// Протокол сервиса общающегося с БД
 public protocol DatabaseServiceProtocol {
 
