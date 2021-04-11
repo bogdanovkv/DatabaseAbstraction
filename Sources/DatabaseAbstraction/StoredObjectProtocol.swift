@@ -8,9 +8,6 @@
 /// Протокол объекта, хранимого в БД
 public protocol StoredObjectProtocol {
 
-	/// Идентификатор объекта в БД
-	static var objectIdentifier: String { get }
-
 	///  Устанавливает значение в объект
 	/// - Parameters:
 	///   - value: значение

@@ -9,22 +9,29 @@
 public protocol DatabaseServiceProtocol {
 
 	/// Извлекает модели из БД
-	/// - Parameter convertClosure: блок для преобразования managed модели в обычную
-	func fetch<Model>(convertClosure: (StoredObjectProtocol) -> Model?) -> [Model]
+	/// - Parameters:
+	///   - storeId: идентификатор для хранения
+	///   - convertClosure: блок для преобразования БД модели в обычную
+	func fetch<Model>(storeId: String,
+					  convertClosure: (StoredObjectProtocol) -> Model?) -> [Model]
 
 	/// Извлекает модели из БД
 	/// - Parameters:
-	///   - convertClosure: блок для преобразования managed модели в обычную
+	///   - storeId: идентификатор для хранения
+	///   - convertClosure: блок для преобразования БД модели в обычную
 	///   - predicate: предикат для выборки моделей
-	func fetch<Model>(convertClosure: (StoredObjectProtocol) -> Model?,
+	func fetch<Model>(storeId: String,
+					  convertClosure: (StoredObjectProtocol) -> Model?,
 													predicate: [String: String]) -> [Model]
 
 	/// Добавить модели в БД
 	/// - Parameters:
+	///   - storeId: идентификатор хранимой модели
 	///   - models: модели
-	///   - convertClosure: блок, в котором происходит установка свойст managed модели
+	///   - convertClosure: блок, в котором происходит установка свойст БД модели
 	///   - completion: блок, выполняющийся по завершению сохранения моделей
-	func insert<Model>(models: [Model],
-												convertClosure: @escaping (Model, StoredObjectProtocol) -> Void,
-												completion: @escaping () -> Void)
+	func insert<Model>(storeId: String,
+					   models: [Model],
+					   convertClosure: @escaping (Model, StoredObjectProtocol) -> Void,
+					   completion: @escaping () -> Void)
 }
