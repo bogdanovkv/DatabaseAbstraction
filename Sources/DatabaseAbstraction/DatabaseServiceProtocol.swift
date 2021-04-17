@@ -34,4 +34,10 @@ public protocol DatabaseServiceProtocol {
 					   models: [Model],
 					   convertClosure: @escaping (Model, StoredObjectProtocol) -> Void,
 					   completion: @escaping () -> Void)
+
+	/// Удаляет все модели из БД
+	/// - Parameters:
+	///   - storeId: идентификатор моделей
+	///   - completion: блок, выполняющийся по завершению удаления моделей
+	func deleteAll(storeId: String, completion: @escaping () -> Void)
 }
